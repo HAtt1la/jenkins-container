@@ -1,0 +1,17 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkinsci/blueocean
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./Jenkinsfile:/var/jenkins_home/Jenkinsfile
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+      - JENKINS_PLUGINS_INSTALL=docker-workflow
+    user: root
+volumes:
+  jenkins_data:
