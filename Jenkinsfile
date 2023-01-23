@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                sh 'ls /var/jenkins_home/workspace/test2/'
+                sh 'ls /var/jenkins_home/workspace/'
             }
         }
     }
